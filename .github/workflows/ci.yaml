@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**/.md'
+  workflow_dispatch:
+
+env:
+  SPACEDRIVE_CUSTOM_APT_FLAGS: --no-install-recommends
+
+jobs:
+  clippy:
+    name: Vercel Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup
+        uses: ./.github/actions/setup
+
+      - name: Install Vercel CLI
+        uses: bash
+        run: pnpm i -g vercel
+
+      - name: Build
+        uses: bash
+        run: vercel build
+
+      - name: Deploy Staging
+        uses: bash
+        if: ref != "main"
+        run: vercel deploy --prebuilt
+
+      - name: Deploy Prod
+        uses: bash
+        if: ref == "main"
+        run: vercel deploy --prebuilt --prod
