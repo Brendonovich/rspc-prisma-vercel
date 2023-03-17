@@ -20,10 +20,6 @@ serde = "1.0.156"
 name = "rspc"
 path = "api/rspc/[rspc].rs"
 
-[[bin]]
-name = "prisma"
-path = "src-rust/bin/prisma.rs"
-
 [patch.crates-io]
 rspc = { git = "https://github.com/brendonovich/rspc", rev = "cdcf77e5eb97ca0b79ea8926f4edb2f7d72093d9" }
 httpz = { git = "https://github.com/oscartbeaumont/httpz", rev = "be67ead9320095bdecf90cae75fded2411509b0f" } # TODO: Move back to crates.io release
