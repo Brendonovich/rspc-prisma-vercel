@@ -1,0 +1,36 @@
+[package]
+name = "rspc-vercel-example"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+path = "src-rust/lib.rs"
+
+[dependencies]
+tokio = { version = "1", features = ["macros", "time"] }
+serde_json = { version = "1.0.86", features = ["raw_value"] }
+rspc = { version = "0.1.3" , features = ["vercel"] }
+vercel_runtime = { version = "0.2.1" }
+async-stream = "0.3.4"
+prisma-client-rust = { git = "https://github.com/Brendonovich/prisma-client-rust", branch = "rspc-0.1.3", default-features = false, features = ["mysql", "rspc"] }
+serde = "1.0.156"
+
+[[bin]]
+name = "rspc"
+path = "api/rspc/[rspc].rs"
+
+[[bin]]
+name = "prisma"
+path = "src-rust/bin/prisma.rs"
+
+[patch.crates-io]
+rspc = { git = "https://github.com/brendonovich/rspc", rev = "cdcf77e5eb97ca0b79ea8926f4edb2f7d72093d9" }
+httpz = { git = "https://github.com/oscartbeaumont/httpz", rev = "be67ead9320095bdecf90cae75fded2411509b0f" } # TODO: Move back to crates.io release
+specta = { git = "https://github.com/oscartbeaumont/specta", rev = "cd12b17c6d77be75117b919dff1e60767538a741" }
+
+[workspace]
+members = [
+	"prisma"
+]
+resolver = "2"
