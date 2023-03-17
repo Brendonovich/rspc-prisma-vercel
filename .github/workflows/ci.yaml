@@ -5,12 +5,6 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - '**/.md'
-  workflow_dispatch:
-
-env:
-  SPACEDRIVE_CUSTOM_APT_FLAGS: --no-install-recommends
 
 jobs:
   clippy:
@@ -24,19 +18,15 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Install Vercel CLI
-        uses: bash
         run: pnpm i -g vercel
 
       - name: Build
-        uses: bash
         run: vercel build
 
       - name: Deploy Staging
-        uses: bash
         if: ref != "main"
         run: vercel deploy --prebuilt
 
       - name: Deploy Prod
-        uses: bash
         if: ref == "main"
         run: vercel deploy --prebuilt --prod
