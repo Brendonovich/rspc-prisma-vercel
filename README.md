@@ -5,6 +5,7 @@
  </strong>
 </div>
 
+
 <br />
 
 - `pages/__app.tsx` - Adds global provider
