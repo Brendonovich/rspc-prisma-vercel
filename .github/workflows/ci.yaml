@@ -28,18 +28,14 @@ jobs:
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Staging
-        uses: docker://amazonlinux:2.0.20191217.0
-        with:
-          entrypoint: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Staging
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Prod
         if: github.ref != 'refs/heads/main'
-        uses: docker://amazonlinux:2.0.20191217.0
-        with:
-          entrypoint: vercel build --token=${{ secrets.VERCEL_TOKEN }} --prod
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }} --prod
 
       - name: Deploy Prod
         if: github.ref == 'refs/heads/main'
