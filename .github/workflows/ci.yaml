@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
         CARGO_BUILD_TARGET: x86_64-unknown-linux-musl
+        TARGET_CC: x86_64-linux-musl-gcc
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -40,6 +41,9 @@ jobs:
 
       - name: Install Vercel CLI
         run: pnpm i -g vercel
+
+      - name: Install musl-tools
+        run: apt-get install musl-tools
 
       - name: Setup Vercel
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
