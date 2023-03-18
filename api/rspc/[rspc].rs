@@ -4,6 +4,8 @@ use rspc_vercel_example::*;
 
 #[tokio::main]
 async fn main() -> Result<(), ()> {
+    println!("PRINT");
+
     let db = Arc::new(
         prisma::PrismaClient::_builder()
             .build()
