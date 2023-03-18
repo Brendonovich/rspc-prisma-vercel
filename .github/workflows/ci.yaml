@@ -43,7 +43,7 @@ jobs:
         run: pnpm i -g vercel
 
       - name: Install musl-tools
-        run: apt-get install musl-tools
+        run: sudo apt-get install musl-tools
 
       - name: Setup Vercel
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
