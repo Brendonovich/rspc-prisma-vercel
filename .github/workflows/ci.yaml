@@ -31,10 +31,10 @@ jobs:
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Staging
-        if: github.ref != 'refs/heads/main'
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Prod
+        if: github.ref != 'refs/heads/main'
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }} --prod
 
       - name: Deploy Prod
