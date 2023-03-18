@@ -27,7 +27,7 @@ jobs:
       - name: Setup Vercel
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
-      - name: Build
+      - name: Build Staging
         run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Staging
