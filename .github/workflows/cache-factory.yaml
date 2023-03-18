@@ -29,5 +29,8 @@ jobs:
       - name: Install musl-tools
         run: sudo apt-get install musl-tools
 
+      - name: Generate Prisma client
+        uses: ./.github/actions/generate-prisma-client
+
       - name: Compile workspace with stable Rust
         run: cargo test --workspace --all-features --no-run --target $CARGO_BUILD_TARGET
