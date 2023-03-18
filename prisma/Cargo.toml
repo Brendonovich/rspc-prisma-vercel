@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 prisma-client-rust-cli = { git = "https://github.com/Brendonovich/prisma-client-rust", branch = "rspc-0.1.3", default-features = false, features = ["mysql", "rspc"] }
+native-tls = { version = "0.2", features = ["vendored"] }
