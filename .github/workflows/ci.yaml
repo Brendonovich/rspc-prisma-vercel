@@ -22,7 +22,8 @@ jobs:
 
       - name: Install Rust stable
         run: |
-          rustup toolchain install stable-x86_64-unknown-linux-musl
+          rustup target add $CARGO_BUILD_TARGET
+          rustup toolchain install stable-$CARGO_BUILD_TARGET
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2.2.2
