@@ -26,5 +26,8 @@ jobs:
           rustup target add $CARGO_BUILD_TARGET
           rustup toolchain install stable-$CARGO_BUILD_TARGET
 
+      - name: Install musl-tools
+        run: sudo apt-get install musl-tools
+
       - name: Compile workspace with stable Rust
         run: cargo test --workspace --all-features --no-run --target $CARGO_BUILD_TARGET
