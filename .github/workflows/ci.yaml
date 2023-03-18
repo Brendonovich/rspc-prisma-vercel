@@ -25,6 +25,7 @@ jobs:
         run: |
           rustup target add $CARGO_BUILD_TARGET
           rustup toolchain install stable-$CARGO_BUILD_TARGET
+          rustup default stable-$CARGO_BUILD_TARGET
 
       - name: Install pnpm
         uses: pnpm/action-setup@v2.2.2
