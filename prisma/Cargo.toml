@@ -6,5 +6,5 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-prisma-client-rust-cli = { git = "https://github.com/Brendonovich/prisma-client-rust", branch = "rspc-0.1.3", default-features = false, features = ["mysql", "rspc"] }
+prisma-client-rust-cli = { git = "https://github.com/Brendonovich/prisma-client-rust", tag = "0.6.7", default-features = false, features = ["mysql", "rspc"] }
 native-tls = { version = "0.2", features = ["vendored"] }
