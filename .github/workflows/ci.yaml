@@ -23,9 +23,8 @@ jobs:
 
       - name: Install Rust stable
         run: |
-          rustup target add stable
-          rustup target add $CARGO_BUILD_TARGET
           rustup toolchain install stable
+          rustup target add $CARGO_BUILD_TARGET
           rustup toolchain install stable-$CARGO_BUILD_TARGET
 
       - name: Install musl-tools
@@ -43,6 +42,11 @@ jobs:
 
       - name: Generate Prisma client
         uses: ./.github/actions/generate-prisma-client
+
+      - name: Install Rust musl 
+        run: |
+          rustup target add $CARGO_BUILD_TARGET
+          rustup toolchain install stable-$CARGO_BUILD_TARGET
 
       - name: Overwrite file
         uses: DamianReeves/write-file-action@master
