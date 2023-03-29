@@ -36,6 +36,8 @@ jobs:
           save-if: true
 
       - name: Generate Prisma client
+        env:
+          CARGO_BUILD_TARGET: x86_64-unknown-linux-gnu
         uses: ./.github/actions/generate-prisma-client
 
       - name: Install Rust musl 
