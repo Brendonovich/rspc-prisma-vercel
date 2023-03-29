@@ -3,6 +3,3 @@ prisma = "run -p prisma-cli --"
 
 [target.x86_64-unknown-linux-musl]
 linker = "x86_64-linux-musl-gcc"
-
-[build]
-target = "x86_64-unknown-linux-musl"

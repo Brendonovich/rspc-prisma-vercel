@@ -42,6 +42,15 @@ jobs:
       - name: Generate Prisma client
         uses: ./.github/actions/generate-prisma-client
 
+      - name: Overwrite file
+        uses: DamianReeves/write-file-action@master
+        with:
+          path: .config/cargo.toml
+          write-mode: overwrite
+          contents: |
+            [build]
+            target = "${{ env.CARGO_BUILD_TARGET }}"
+
       - name: Install Vercel CLI
         run: pnpm i -g vercel
 
