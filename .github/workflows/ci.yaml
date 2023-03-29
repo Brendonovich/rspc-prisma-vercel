@@ -24,6 +24,7 @@ jobs:
       - name: Install Rust stable
         run: |
           rustup target add $CARGO_BUILD_TARGET
+          rustup toolchain install stable
           rustup toolchain install stable-$CARGO_BUILD_TARGET
 
       - name: Install musl-tools
