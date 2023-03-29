@@ -23,6 +23,7 @@ jobs:
 
       - name: Install Rust stable
         run: |
+          rustup target add stable
           rustup target add $CARGO_BUILD_TARGET
           rustup toolchain install stable
           rustup toolchain install stable-$CARGO_BUILD_TARGET
